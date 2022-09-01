@@ -18,6 +18,8 @@ const { AccordionItem } = Accordion;
 const GoldMaxH2 = () => {
   const [sideDrawerAttr] = useAttribute('Side Drawers');
   const [topDrawerAttr] = useAttribute('Top Drawers');
+  const [extraDrawerAttr] = useAttribute('Extra Drawers');
+
   if (!sideDrawerAttr || !topDrawerAttr) return <></>;
   return (
     <div className="animate__animated animate__fadeIn">
@@ -78,11 +80,15 @@ const GoldMaxH2 = () => {
                     <Tiles attribute="Extra Drawers" />
                   </AccordionItem>
                 </Accordion>
-                <Accordion>
-                  <AccordionItem label="Extra Drawers Color">
-                    <ColorSwatch attribute="Extra Drawers Color" />
-                  </AccordionItem>
-                </Accordion>
+                {extraDrawerAttr.value === 'None' ? (
+                  <></>
+                ) : (
+                  <Accordion>
+                    <AccordionItem label="Extra Drawers Color">
+                      <ColorSwatch attribute="Extra Drawers Color" />
+                    </AccordionItem>
+                  </Accordion>
+                )}
               </>
             ) : (
               <></>
